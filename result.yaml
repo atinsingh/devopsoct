@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: result
+  labels:
+    app: result
+    tier: frontend
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: result
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: result
+    spec:
+      containers:
+      - name: result
+        image: pragra/result
+        envFrom:
+          - configMapRef:
+              name: voteconfig
+        ports:
+        - containerPort: 80
+          portocol: TCP
+        restartPolicy: Always

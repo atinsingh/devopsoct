@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  voteservice
+spec:
+  selector:
+    app:  vote
+  type:   NodePort
+  ports:
+  - name:  vote-port
+    port:  80

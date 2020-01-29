@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  resultsvc
+spec:
+  selector:
+    app:  result
+  type:   LoadBalancer
+  ports:
+  - name:  result-port
+    port:  80

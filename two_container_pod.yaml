@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-two
+  labels:
+    name: demo-two
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+    ports:
+      - containerPort: 80
+    volumeMounts:
+      - name:  data
+        mountPath:  /var/www/html
+  - name: alpine
+    image: alpine
+    ports:
+    volumeMounts:
+      - name:  data
+        mountPath:  /var/data
+    
+  volumes:
+    - name:  data
+      emptyDir: {}

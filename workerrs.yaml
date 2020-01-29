@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: worker
+  labels:
+    app: worker
+    tier: backend
+spec:
+  # modify replicas according to your case
+  replicas: 3
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        tier: backend
+        app: worker
+    spec:
+      containers:
+      - name: worker
+        image: pragra/worker

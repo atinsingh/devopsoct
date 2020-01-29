@@ -1,0 +1,10 @@
+kind:apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: voteconfig
+  namespace: pragra-dev
+  labels:
+    app: voteconfig
+data:
+  OPTION_A: DEVOPS
+  OPTION_B: AWS

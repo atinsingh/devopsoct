@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  votedeploy
+  labels:
+    name:  voteDeploy
+spec:
+  replicas: 4
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: vote
+  revisionHistoryLimit: 4
+  template:
+    metadata:
+      labels:
+        name:  vote
+        app: vote
+    spec:
+      containers:
+      - image:  pragra/vote:v1
+        name:  vote
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+        ports:
+        - containerPort:  80
+          name:  main-port
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      volumes:
+        - name: data
+          emptyDir: {}
