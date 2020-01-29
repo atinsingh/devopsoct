@@ -155,5 +155,5 @@ sysctl net.bridge.bridge-nf-call-iptables=1
 ```
 #### Join Node 
 ```
-kubeadm join --token 6huhzm.twp2jvi9avehfvvu -discovery-token-unsafe-skip-ca-verification 192.168.0.101:6443
+kubeadm join --token 6huhzm.twp2jvi9avehfvvu --discovery-token-unsafe-skip-ca-verification 192.168.0.101:6443
 ```
