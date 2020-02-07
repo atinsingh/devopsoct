@@ -1,8 +1,7 @@
-kind:apiVersion: v1
+apiVersion: v1
 kind: ConfigMap
 metadata:
   name: voteconfig
-  namespace: pragra-dev
   labels:
     app: voteconfig
 data:

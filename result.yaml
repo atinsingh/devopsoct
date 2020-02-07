@@ -25,5 +25,5 @@ spec:
               name: voteconfig
         ports:
         - containerPort: 80
-          portocol: TCP
-        restartPolicy: Always
+          protocol: TCP
+        
