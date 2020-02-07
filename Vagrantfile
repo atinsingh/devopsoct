@@ -13,16 +13,16 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "kube-master" do |kube_master|
     kube_master.vm.hostname = "kube-master"
-    kube_master.vm.network "private_network", ip: "192.168.0.101"
+    kube_master.vm.network "private_network", ip: "192.168.30.101"
     kube_master.vm.synced_folder ".", "/kube"
      config.vm.provider :virtualbox do |vb|
-       vb.customize ["modifyvm", :id, "--memory", "1024"]
+       vb.customize ["modifyvm", :id, "--memory", "4096"]
        vb.customize ["modifyvm", :id, "--cpus", "2"]
     end  
   end
   config.vm.define "kube-node1" do |node1|
     node1.vm.hostname = "kube-node1"
-    node1.vm.network "private_network",  ip: "192.168.0.102"
+    node1.vm.network "private_network",  ip: "192.168.1.102"
      config.vm.provider :virtualbox do |vb|
        vb.customize ["modifyvm", :id, "--memory", "1024"]
        vb.customize ["modifyvm", :id, "--cpus", "2"]
@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
   end
   config.vm.define "kube-node2" do |node2|
     node2.vm.hostname = "kube-node2"
-    node2.vm.network "private_network", ip: "192.168.0.103"
+    node2.vm.network "private_network", ip: "192.168.1.103"
      config.vm.provider :virtualbox do |vb|
        vb.customize ["modifyvm", :id, "--memory", "1024"]
        vb.customize ["modifyvm", :id, "--cpus", "2"]

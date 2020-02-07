@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name:  vote
+  name:  vote-green
   labels:
-    name:  vote
+    name:  vote-green
 spec:
   replicas: 4
   strategy:
@@ -13,17 +13,20 @@ spec:
     #   maxUnavailable: 1
   selector:
     matchLabels:
-      app: vote
+      app: vote-green
   revisionHistoryLimit: 4
   template:
     metadata:
       labels:
-        name:  vote
-        app: vote
+        name:  vote-green
+        app: vote-green
     spec:
       containers:
-      - image:  pragra/vote:v1
-        name:  vote
+      - image:  pragra/vote:v2
+        name:  vote-green
+        envFrom:
+          - configMapRef:
+              name: vote
         resources:
           requests:
             cpu: "20m"
